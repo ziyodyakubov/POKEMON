@@ -1,8 +1,10 @@
 let cardWrapper = document.querySelector(".card_wrapper");
 
-function renderData(data){
-    data.cards.forEach((el)=>{
-        const {img,name,extra,kg,age} = el;
+// DATA INTERCHANGE STARTED
+
+function renderData(data) {
+    data.cards.forEach((el) => {
+        const { img, name, extra, kg, age } = el;
 
         const card = document.createElement('div')
 
@@ -36,3 +38,59 @@ function renderData(data){
 }
 
 renderData(card)
+
+// DATA INTERCHANGE ENDED
+
+// STARTED SELECT VARIABLE FOR SEARCHING
+
+let searchInput = document.querySelector(".searchbtn");
+let searchWrapper = document.querySelector(".inputResult");
+let exitBtn = document.querySelector(".exit");
+let searchli = document.querySelector(".search-li");
+let searcha = document.querySelector(".search-a");
+let moshniy = document.querySelector(".moshniywrapper");
+
+
+exitBtn.addEventListener("click", () => {
+    searchWrapper.style.display = "none";
+    searchInput.value = "";
+})
+
+searchInput.addEventListener('input', function (e) {
+    searchWrapper.classList.toggle("hidden");
+
+    if (searchWrapper.classList[5] !== "hidden") {
+        searchWrapper.style.display = 'flex';
+    }
+
+})
+
+// ENDED SELECT VARIABLE FOR SEARCHING
+
+
+// SEARCH PROCESSING STARTED
+
+let search = document.querySelector(".searchbtn");
+
+search.addEventListener("input", function (e) {
+    let searchStr = e.target.value;
+    let searched = card.cards.filter(el => {
+        return el.name.toLowerCase().includes(searchStr.toLowerCase())
+    })
+
+    RenderData2(searched)
+
+})
+
+function RenderData2(data) {
+    moshniy.innerHTML = ''
+    data.forEach(el => {
+        let searchTitle = document.createElement('li')
+        searchTitle.textContent = el.name;
+        moshniy.appendChild(searchTitle)
+    })
+
+}
+
+
+// SEARCH PROCESSING ENDED
