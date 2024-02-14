@@ -2,4 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {}
+* {
+    font-family: "Roboto";
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding: 50px !important;
+}
+
+.searchbtn::placeholder {
+    color: black;
+}
