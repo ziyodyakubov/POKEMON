@@ -10,7 +10,7 @@ function renderData(data) {
 
 
         card.innerHTML = `
-                                <div class="card w-[307px] bg-[#fff] border-[2px] border-[#000] rounded-[20px] cursor-pointer">
+                     <div class="card w-[307px] bg-[#fff] border-[2px] border-[#000] rounded-[20px] cursor-pointer">
                             <img src="${img}" alt="pinguing"
                                 class="px-[75px] pt-[30px] pb-[68px]">
 
@@ -51,11 +51,6 @@ let searcha = document.querySelector(".search-a");
 let moshniy = document.querySelector(".moshniywrapper");
 
 
-exitBtn.addEventListener("click", () => {
-    searchWrapper.style.display = "none";
-    searchInput.value = "";
-})
-
 searchInput.addEventListener('input', function (e) {
     searchWrapper.classList.toggle("hidden");
 
@@ -78,6 +73,10 @@ search.addEventListener("input", function (e) {
         return el.name.toLowerCase().includes(searchStr.toLowerCase())
     })
 
+    if(searchStr == ""){
+        searchWrapper.style.display = "none";
+    }
+
     RenderData2(searched)
 
 })
@@ -89,7 +88,7 @@ function RenderData2(data) {
         searchTitle.textContent = el.name;
         moshniy.appendChild(searchTitle)
     })
-
+    
 }
 
 
